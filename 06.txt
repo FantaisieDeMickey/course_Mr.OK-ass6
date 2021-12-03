@@ -1,0 +1,43 @@
+import numpy as np
+
+def select_topk_eigenvalues_and_eigenvectors(a_matrix, k):
+    w, v = np.linalg.eig(image_matrix)
+    sorted_indices = list(sorted(range(len(w)), key=lambda k: w[k], reverse=True))
+    a=[]
+    b=[]
+    i=0
+    while(k):
+        a.append(w[sorted_indices[i]])
+        b.append(v[:,sorted_indices[i]])
+        i=i+1
+        k=k-1
+    b=np.transpose(b)
+    return a,b
+
+# you should only complete the above function
+
+def input_a_matrix():
+    row_list = []
+    while True:
+        arow = [float(ele) for ele in input().split()]
+        if len(arow) == 0:
+            break
+        row_list.append(arow)
+
+    a_matrix = np.array(row_list)
+    return a_matrix
+
+k = int(input().strip())
+image_matrix = input_a_matrix()
+
+output_data = select_topk_eigenvalues_and_eigenvectors(image_matrix, k)
+
+row = ["%.3f" % (ele) for ele in output_data[0]]
+print(*row, sep=' ')
+for row in output_data[1]:
+    row = ["%.3f" % (ele) for ele in row]
+    print(*row, sep=' ')
+print()
+
+
+    

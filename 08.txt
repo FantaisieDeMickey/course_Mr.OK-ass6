@@ -1,0 +1,6 @@
+nums = input().split()
+threshold,nums = int(nums[0]),[int(i) for i in nums[1:]]
+import numpy
+nums = numpy.array(nums)
+a=numpy.where(nums>threshold,1,0)
+print(*a)

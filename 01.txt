@@ -1,0 +1,29 @@
+
+import numpy as np
+def finding_zero_elements(a_matrix):
+    # a function to return all the coordinates of zero elements in the given matrix.
+    ans = []
+    ans=np.argwhere(a_matrix==0)
+    return ans
+  
+def print_ans(ans):
+    for i in ans:
+        print(*i)
+    pass
+
+# you should only complete the above functions
+
+def input_a_matrix():
+    nrow = [int(ele) for ele in input().split()][0]
+    row_list = []
+    for _ in range(nrow):
+        arow = [int(ele) for ele in input().split()]
+        row_list.append(arow)
+    
+    a_matrix = np.array(row_list)
+    return a_matrix
+
+a_matrix = input_a_matrix()
+ans = finding_zero_elements(a_matrix)
+print_ans(ans)
+

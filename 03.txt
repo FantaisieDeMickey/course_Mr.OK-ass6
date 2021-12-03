@@ -1,0 +1,28 @@
+import numpy
+def solve_linear_equations(A, B):
+    A1 = numpy.linalg.inv(A)
+    return numpy.dot(A1, B)
+
+
+# You should onlye complete the above funtion
+
+def get_input_data():
+    nrow = [int(ele) for ele in input().split()][0]
+    row_list = []
+    for _ in range(nrow):
+        arow = [int(ele) for ele in input().split()]
+        row_list.append(arow)
+    a_matrix = np.array(row_list, dtype=int)
+    arow = [int(ele) for ele in input().split()]
+    b_vector = np.array(arow, dtype=int).reshape((-1, 1))
+    return a_matrix, b_vector
+
+
+input_data = get_input_data()
+output_data = solve_linear_equations(*input_data)
+
+for row in output_data:
+    row = ["%.3f" % (ele) for ele in row]
+    print(*row, sep=' ')
+print()
+

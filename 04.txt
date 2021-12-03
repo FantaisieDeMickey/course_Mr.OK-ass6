@@ -1,0 +1,26 @@
+import numpy as np
+def singular_value_decomposition(a_matrix):
+    u,s,vh=np.linalg.svd(a_matrix, full_matrices=False)
+    return s
+
+# you should only complete the above function
+
+def input_a_matrix():
+    # nrow = [int(ele) for ele in input().split()][0]
+    row_list = []
+    while True:
+        arow = [int(ele) for ele in input().split()]
+        if len(arow) == 0:
+            break
+        row_list.append(arow)
+    
+    a_matrix = np.array(row_list)
+    return a_matrix
+    
+image_matrix = input_a_matrix()
+
+output_data = singular_value_decomposition(image_matrix)
+
+row = ["%.3f" % (ele) for ele in output_data]
+print(*row, sep=' ')
+print()

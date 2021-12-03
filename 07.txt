@@ -1,0 +1,48 @@
+import numpy as np
+
+def solution(a_matrix):
+  # columns of a_matrix: 0-age,1-sex,2-cp,3-trestbps,4-chol,5-fbs,6-restecg,7-thalach,8-exang,9-oldpeak,10-slope,11-ca,12-thal,13-target
+  #	return a_mean i.e. average value of the ‘trestbps’ (resting blood pressure) among patients whose age are under 60 (including 60).
+  #		and a_max i.e. max value of ‘thalach’ (heart rate) among female patients. (sex column is 1)
+    arr1 = (a_matrix[:,0])
+    arr2=  (a_matrix[:,3])
+    arr3=  (a_matrix[:,1])
+    arr4=  (a_matrix[:,7])
+    filter_arr = []
+  # go through each element in arr
+    for element in arr1:
+  # if the element is higher than 42, set the value to True, otherwise False:
+        if element <= 60:
+            filter_arr.append(True)
+        else:
+            filter_arr.append(False)
+    a_mean= np.mean(arr2[filter_arr])
+    
+    filter_arr1 = []
+  # go through each element in arr
+    for element in arr3:
+  # if the element is higher than 42, set the value to True, otherwise False:
+        if element == 1:
+            filter_arr1.append(True)
+        else:
+            filter_arr1.append(False) 
+    
+    a_max= np.max(arr4[filter_arr1])
+    return (a_mean, a_max)
+
+# You should only complete the above function
+
+def input_a_matrix():
+    row_list = []
+    while True:
+        arow = [float(ele) for ele in input().split()]
+        if len(arow) == 0:
+            break
+        row_list.append(arow)
+    
+    a_matrix = np.array(row_list)
+    return a_matrix
+
+input_data = input_a_matrix()
+output_data = solution(input_data)
+print("%.3f, %.3f" % output_data)

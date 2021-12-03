@@ -1,0 +1,28 @@
+def solution(A, B):
+    avgDists = np.array(A)
+    n=len(A)
+    ids = avgDists.argsort()[::-1][:n]
+    newA=[]
+    newB=[]
+    for i in ids:
+        newA.append(A[i])
+    for i in ids:
+        newB.append(B[i])
+    return newA,newB
+
+# you should only complete the above function
+
+def input_two_vectors():
+    arow = [int(ele) for ele in input().split()]
+    a_vector = np.array(arow)
+    arow = [int(ele) for ele in input().split()]
+    b_vector = np.array(arow)
+    return a_vector, b_vector
+
+
+A, B = input_two_vectors()
+
+newA, newB = solution(A, B)
+print(*newA)
+print(*newB)
+
